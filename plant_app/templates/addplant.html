@@ -1,0 +1,18 @@
+{% extends 'loginhome.html' %}
+{% load static %} 
+{% block content %}
+<div class="add">
+    <form action="{% url 'getplant' %}" method="POST" enctype="multipart/form-data"> <!-- TO HANDLE ERRORS ENCTYPE IS USED -->
+        {% csrf_token %}
+        <label for="plant_image" class="form-label">Image:</label>
+        <br>
+        <input type="file" class="form-control" id="plant-image" name="plant_image"><br>
+        <label for="plantname" class="form-label">Plant Name:</label><br>
+        <input type="text" class="form-control" id="plantname" name="plantname"><br>
+        <label for="description" >Plant Description:</label><br>
+        <textarea name="description" id="description" cols="50" rows="3"></textarea>
+        <br>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+  {% endblock %}

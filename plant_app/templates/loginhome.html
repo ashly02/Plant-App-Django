@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <style>
+        *{  
+        margin: 0px;
+        padding:0px;
+    }
+    body{
+            background: linear-gradient(to bottom, #81b455, #FFFFFF);
+
+        }
+    header{
+        background-color: rgb(3, 78, 11);
+        height: 100px;
+    }
+    #head{
+        margin-left: 15px;
+        color: white;
+        padding-top: 20px;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    .nav{
+        color: white;
+        position: absolute; 
+        right: 20px;
+        transform: translateY(-50%);
+    }
+    ul{
+        list-style: none;
+        margin-right: 20px;
+    }
+    li{
+        display: inline-block;
+        margin:0px 50px;
+        font-weight: bold;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+    .nav a{
+        color: white;
+        text-decoration:none ;
+    }
+    footer{
+        background-color: rgb(3, 78, 11);
+        height:80px;
+        margin-top: 752px;
+    }  
+    footer h3,p{
+        color: white;
+        text-align: center;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    } 
+    .add ,.book {
+            background-color:white;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            border: solid  1px;
+            width:500px;
+            padding: 30px 50px 30px 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+  
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="head">VERDANT VINES</h1>
+   
+    <div class="nav">
+        <ul>
+            <li><a href="{% url 'loginhome' %}"> Home</a></li>
+            <li><a href="{% url 'booking' %}">Book</a></li>
+            <li><a href="{% url 'viewdata' %}">View Users</a></li>
+            <li><a href="{% url 'addplant' %}">Add Plants</a></li>
+            <li><a href="{% url 'logout' %}"> Logout</a></li>
+        </ul>
+    </div>
+</header>
+{% block content %}
+<div class="container">
+    <div class="row">
+    {% for i in data %}
+    <div class="col-sm-6 pt-3" style="width:300px; margin-top:25px;">
+        <div class="card text-center pt-3">
+    <img src="{{i.plant_image.url}}" class="card-img-top" alt="card image" style="height: 15em;">
+    <div class="card-body">
+      <h4 class="card-title">{{i.plantname}}</h4>
+      <a href="{% url 'view' did=i.id %}" class="btn btn-success">View</a>
+    </div>
+</div>
+</div>
+    {% endfor %}
+    </div>
+  </div>
+</div> 
+{% endblock %}
+<footer>
+    <h3>Online Shopping</h3>
+    <p>&copy; Contact:9854725896</p>
+</footer>
+</body>
+</html>

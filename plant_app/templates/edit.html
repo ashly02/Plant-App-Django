@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for j in data %}
+    <form method="POST" action="{% url 'update' did=j.id %}">
+        {%csrf_token %}  <!-- To remove the forbidden message when clicking submit -->
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name" id="name" placeholder="Enter Name.." value="{{j.name}}">
+        <br><br>
+        <label for="email">Email</label>
+        <br>
+        <input type="email" name="email" id="email" placeholder="Enter email" value="{{j.email}}">
+        <br><br>
+        <label for="phone">Phone</label>
+        <br>
+        <input type="text" name="phone" id="phone" placeholder="Phone Number" value="{{j.phone}}">
+       <br><br>
+        <label for="address">Address</label>
+        <br>
+        <textarea name="address" id="address" rows="3" cols="20" placeholder="Address">{{j.address}}</textarea>>
+        <br><br>
+        <label for="password">Password</label>
+        <br>
+        <input type="password" name="password" id="password" placeholder="password">
+        <br><br>
+        <button>Register</button>
+    </form>
+    {% endfor %}
+</body>
+</html>

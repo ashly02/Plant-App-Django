@@ -1,0 +1,30 @@
+{% extends 'loginhome.html' %}
+{% load static %} 
+{% block content %}
+<table class="table table-striped" style="margin-top: 25px;">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for j in data %}
+        <tr>
+            <td>{{j.name}}</td>
+            <td>{{j.email}}</td>
+            <td>{{j.phone}}</td>
+            <td>{{j.address}}</td>
+            <td><a href="{% url 'edit' did=j.id %}"><button class="btn btn-primary">Edit</button></a></td>
+            <td><a href="{% url 'delete' did=j.id %}"><button class="btn btn-danger">Delete</button></a></td>
+
+        </tr>
+        {% endfor %}  
+    </tbody>
+    </table>
+
+    {% endblock %}

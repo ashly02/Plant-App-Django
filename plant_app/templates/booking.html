@@ -1,0 +1,35 @@
+{% extends 'loginhome.html' %}
+{% load static %} 
+{% block content %}
+<div class="book">
+    <form method="POST" action="{% url 'getvalue' %}">
+        {%csrf_token %}
+        <label for="pname">Name</label>
+        <br>
+        <input type="text" id="pname" name="pname" placeholder="name">
+        <br><br>
+      
+        <label for="paddress">Address</label>
+        <br>
+        <textarea type="text" id="paddress" name="paddress" placeholder="Address"></textarea>>
+        <br><br>
+
+        <label for="pphone">Phone</label>
+        <br>
+        <input type="text" id="pphone" name="pphone" placeholder="Phone">
+        <br><br>
+
+        <label for="plant">Choose your plant:</label>
+        
+        <br>
+        <select name="plant" id="plant">
+           <option value="">.......</option>
+           {% for j in data %}
+           <option value="{{j.plantname}}">{{j.plantname}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button class="btn btn-success">Book</button>
+    </form>
+</div>
+{% endblock %}

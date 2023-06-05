@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% load static %} 
+{% block content %}
+<div class="container" style="margin-top: 25px; text-align: center;">
+    {% for j in data %}
+    <img src="{{j.plant_image.url}}" alt="plant" style=" width: 800px; height:600px;">
+    <p style=" font-weight: bolder; font-size: 50px; text-transform: uppercase; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: rgb(5, 140, 27);">{{j.plantname}}</p>
+    <p style=" font-size: 23px;text-transform: uppercase;color: green; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; ">{{j.description}}</p>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
